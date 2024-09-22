@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AdR-Gaussian: Accelerating Gaussian Splatting with Adaptive Radius">
+  <meta name="keywords" content="Novel view synthesis,  Guassian splatting, Real-time rendering">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdR-Gaussian: Accelerating Gaussian Splatting with Adaptive Radius</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://hiroxzwang.github.io/">
+          <span class="icon">
+              <i class="fas fa-home"></i>
+          </span>
+      </a>
+
+<!--      <div class="navbar-item has-dropdown is-hoverable">-->
+<!--        <a class="navbar-link">-->
+<!--          More Research-->
+<!--        </a>-->
+<!--      </div>-->
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">AdR-Gaussian: Accelerating Gaussian Splatting with Adaptive Radius</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://hiroxzwang.github.io/">Xinzhe Wang*</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://yiranran.github.io/">Ran Yi*</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://dmcv.sjtu.edu.cn/people/">Lizhuang Ma</a><sup>1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block" style="font-weight: bold; color: red;">SIGGRAPH ASIA 2024</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://hiroxzwang.github.io/publications/adrgaussian/static/pdf/saconferencepapers24-118.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2409.08669"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+<!--                        href="https://github.com/hiroxzwang/AdR-Gaussian"-->
+                <a
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming soon)</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://hiroxzwang.github.io/publications/adrgaussian/static/pdf/saconferencepapers24-118-appendix.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supplementary Material</span>
+                </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/suppl.mp4"
+                type="video/mp4">
+      </video> -->
+      <img src="./static/images/teaser.jpg" style="max-width: 130%; margin: 0 0 0 -15%;">
+      <h2 class="subtitle has-text-centered">
+        Our <strong>AdR-Gaussian</strong> achieves a significant improvement in rendering speed for the 3D Gaussian Splatting model with equivalent or better quality.
+<!--        The key to this performance is the lossless early culling of Gaussian-Tile pairs based on adaptive radius of projected Gaussians, which narrows the rendering range for each Gaussian by removing tiles with low splatting opacity.-->
+<!--        Additionally, we propose a load balancing approach to further accelerate rendering.-->
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            3D Gaussian Splatting (3DGS) is a recent explicit 3D representation that has achieved high-quality reconstruction and real-time rendering of complex scenes. However, the rasterization pipeline still suffers from unnecessary overhead resulting from avoidable serial Gaussian culling, and uneven load due to the distinct number of Gaussian to be rendered across pixels, which hinders wider promotion and application of 3DGS. In order to accelerate Gaussian splatting, we propose AdR-Gaussian, which moves part of serial culling in Render stage into the earlier Preprocess stage to enable parallel culling, employing adaptive radius to narrow the rendering pixel range for each Gaussian, and introduces a load balancing method to minimize thread waiting time during the pixel-parallel rendering. Our contributions are threefold, achieving a rendering speed of 310% while maintaining equivalent or even better quality than the state-of-the-art. Firstly, we propose to early cull Gaussian-Tile pairs of low splatting opacity based on an adaptive radius in the Gaussian-parallel Preprocess stage, which reduces the number of affected tile through the Gaussian bounding circle, thus reducing unnecessary overhead and achieving faster rendering speed. Secondly, we further propose early culling based on axis-aligned bounding box for Gaussian splatting, which achieves a more significant reduction in ineffective expenses by accurately calculating the Gaussian size in the 2D directions. Thirdly, we propose a balancing algorithm for pixel thread load, which compresses the information of heavy-load pixels to reduce thread waiting time, and enhance information of light-load pixels to hedge against rendering quality loss. Experiments on three datasets demonstrate that our algorithm can significantly improve the Gaussian Splatting rendering speed.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+<!--    <div class="columns is-centered has-text-centered">-->
+<!--      <div class="column is-four-fifths">-->
+<!--        <h2 class="title is-3">Video</h2>-->
+<!--        <div class="publication-video">-->
+<!--          <video poster="" id="mask" controls muted loop playsinline height="100%">-->
+<!--            <source src="./static/videos/suppl.mp4" type="video/mp4">-->
+<!--          </video>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Overview</h2>
+        <img src="./static/images/pipeline.png" style="max-width: 100%; margin: 0 0 0 0;">
+
+        <!-- Interpolating. -->
+<!--        <h3 class="title is-4">Overview</h3>-->
+        <div class="content has-text-justified">
+          <p>
+            We propose <strong>AdR-Gaussian</strong>, designed to accelerate the rendering process of 3DGS.
+            In this approach, we propose to move part of serial culling in Render stage earlier into parallel culling in Preprocess stage.
+            We early cull Gaussian-Tile with low splatting opacity based on adaptive radius, which is the bounding circle radius of the ellipse constructed by minimum splatting opacity.
+            Furthermore, we employ axis-aligned bounding box tailored for Gaussian Splatting to improve culling efficiency.
+            To address the uneven load issue, we propose a load balancing algorithm for pixel threads, which reduces the number of Gaussian for heavy-load pixels to reduce thread waiting time, and increases that for light-load pixels to hedge against quality loss.
+          </p>
+        </div>
+        <br/>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Experimental Results</h2>
+
+        <h3 class="title is-4">Qualitative Comparisons</h3>
+        <img src="./static/images/comparations-qual.jpg" style="max-width: 100%; margin: 0 0 0 0;">
+        <h3 class="title is-4">Quantitative Comparisons</h3>
+        <img src="./static/images/comparations-quan.png" style="max-width: 100%; margin: 0 0 0 0;">
+<!--        <div class="content has-text-justified">-->
+<!--          <p>-->
+<!--            We propose <strong>AdR-Gaussian</strong>, designed to accelerate the rendering process of 3DGS.-->
+<!--            In this approach, we propose to move part of serial culling in Render stage earlier into parallel culling in Preprocess stage.-->
+<!--            We early cull Gaussian-Tile with low splatting opacity based on adaptive radius, which is the bounding circle radius of the ellipse constructed by minimum splatting opacity.-->
+<!--            Furthermore, we employ axis-aligned bounding box tailored for Gaussian Splatting to improve culling efficiency.-->
+<!--            To address the uneven load issue, we propose a load balancing algorithm for pixel threads, which reduces the number of Gaussian for heavy-load pixels to reduce thread waiting time, and increases that for light-load pixels to hedge against quality loss.-->
+<!--          </p>-->
+<!--        </div>-->
+        <br/>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{xzwang2024adrgaussian,
+  title={AdR-Gaussian: Accelerating Gaussian Splatting with Adaptive Radius},
+  author={Wang, Xinzhe and Yi, Ran and Ma, Lizhuang},
+  booktitle={ACM SIGGRAPH Asia 2024 Conference Proceedings},
+  pages={1--10},
+  year={2024}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This template is a modification to <a href="https://github.com/nerfies/nerfies.github.io"> Nerfies</a>'s webpage.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
