@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MIRAGE: Metric Inference and Reliability-Aware Gaussian Estimation from Feed-Forward Vision. Metric trajectories, detailed Gaussian reconstruction, and a long-horizon indoor benchmark.">
+  <meta name="theme-color" content="#39734e">
+  <title>MIRAGE — Metric motion. Detailed worlds.</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="config.js"></script>
+  <script defer src="tables.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#overview">Skip to research overview</a>
+<header class="hero" id="top" aria-label="MIRAGE video showcase">
+  <div class="hero-panes">
+    <div class="hero-pane reconstruction"><video id="hero-reconstruction" muted loop playsinline preload="none" poster="assets/reconstruction.jpg" aria-label="25-scene progressive Gaussian point-cloud reconstruction"></video></div>
+    <div class="hero-pane rendering"><video id="hero-rendering" muted loop playsinline preload="none" poster="assets/rendering.jpg" aria-label="25-scene refined Gaussian rendering"></video></div>
+  </div>
+  <div class="hero-brand"><span class="wordmark">MIRAGE</span></div>
+  <div id="hero-divider" role="slider" tabindex="0" aria-label="Reconstruction reveal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% reconstruction, 50% rendering" aria-orientation="horizontal"><span aria-hidden="true">‹ ›</span></div>
+</header>
+<nav class="nav" aria-label="Sections"><a class="wordmark" href="#top">MIRAGE</a><div><a href="#overview">Overview</a><a href="#method">Method</a><a href="#scenes">Scenes</a><a href="#benchmark">Benchmark</a><button id="hero-toggle" type="button" aria-label="Play showcase" title="Play showcase" aria-pressed="false">▶</button></div></nav>
+<p id="hero-status" class="showcase-status" role="status"></p>
+<main>
+  <section id="overview" class="section introduction">
+    <p class="eyebrow">Metric inference × Gaussian estimation</p>
+    <h1><span class="wordmark">MIRAGE</span><br><span class="initial">M</span>etric <span class="initial">I</span>nference and <span class="initial">R</span>eliability-<span class="initial">A</span>ware<br class="desktop"> <span class="initial">G</span>aussian <span class="initial">E</span>stimation<br class="desktop"> <span class="muted">from Feed-Forward Vision</span></h1>
+    <p id="authors" hidden></p>
+    <p id="affiliations" hidden></p>
+    <div class="actions" id="resources">
+      <a class="button resource-link" id="paper-link" role="link" aria-disabled="true" tabindex="0" title="Paper coming soon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h6"/></svg>Paper</a>
+      <a class="button resource-link" id="code-link" role="link" aria-disabled="true" tabindex="0" title="GitHub repository coming soon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.82 1.1.82 2.22v3.3c0 .32.22.7.83.58A12 12 0 0 0 12 .3z"/></svg>GitHub</a>
+      <a class="button primary" href="#scenes">Watch the scene demos ↗</a><a class="button" href="#method">Explore the method ↓</a></div>
+    <div class="abstract"><h2>TL;DR</h2><p id="abstract"></p></div>
+    <figure><img loading="lazy" src="assets/teaser.webp" alt="MIRAGE teaser: Oxford Spires Gaussian reconstruction, trajectory, rendering and an indoor benchmark"><figcaption>On Oxford Spires Blenheim 02: lower ATE than COLMAP (3.27 vs. 5.50 cm), and higher rendering PSNR than Gaussian-LIC2 (27.82 vs. 21.28 dB). Scene-specific results, not dataset-wide averages.</figcaption></figure>
+  </section>
+  <section id="method" class="section">
+    <div class="section-heading"><p class="eyebrow">01 / Method</p><h2>Grounded in motion.<br>Refined in appearance.</h2><p>Feed-forward visual evidence meets LiDAR–inertial metric motion, with reliability-aware pose refinement and structure-aware Gaussian adaptation.</p></div>
+    <figure><img loading="lazy" src="assets/pipeline.webp" alt="MIRAGE method pipeline from multimodal input to pose estimation and Gaussian reconstruction"><figcaption>The MIRAGE pipeline.</figcaption></figure>
+  </section>
+  <section id="quantitative" class="section">
+    <div class="section-heading"><p class="eyebrow">Quantitative results</p><h2>Metric accuracy. Rendering fidelity.</h2></div>
+    <h3 class="table-title">Pose estimation <span>ATE (cm) ↓</span></h3>
+    <div data-table="pose"></div>
+    <h3 class="table-title">Rendering quality <span>PSNR ↑ / SSIM ↑ / LPIPS ↓</span></h3>
+    <div data-table="rendering"></div>
+  </section>
+  <section id="scenes" class="section scene-section">
+    <div class="section-heading"><p class="eyebrow">02 / In motion</p><h2>Every scene. A different perspective.</h2><p>Browse Oxford Spires, M2DGR, INS, and our indoor benchmark. Each demo pairs a reconstruction-process illustration with a refined Gaussian rendering replay.</p></div>
+    <div id="filters" class="filters" role="group" aria-label="Filter scenes by dataset"></div>
+    <div class="scene-viewer"><div class="player-wrap"><video id="scene-video" controls playsinline preload="none" poster="assets/scenes/b2.jpg" aria-label="Selected scene demo"></video><p id="scene-error" class="media-error" hidden role="status"></p></div><aside><p id="scene-dataset" class="eyebrow"></p><h3 id="scene-title"></h3><p id="scene-description"></p><div class="chapter-buttons"><button type="button" data-seek="0">01 · Reconstruction</button><button type="button" data-seek="24">02 · Rendering</button></div><a id="scene-download" download>Download this demo ↓</a><div class="scene-arrows"><button id="previous" type="button" aria-label="Previous scene">←</button><span id="scene-position" aria-live="polite"></span><button id="next" type="button" aria-label="Next scene">→</button></div></aside></div>
+    <div id="scene-list" class="scene-list" aria-label="Choose a scene"></div>
+  </section>
+  <section id="benchmark" class="section">
+    <div class="section-heading"><p class="eyebrow">03 / Beyond short trajectories</p><h2>A long-horizon indoor benchmark.</h2><p>Object-rich laboratories, dining areas, corridors, and offices. Synchronized multimodal observations and MIRAGE-established 6-DoF reference trajectories support evaluation of vision-only reconstruction.</p></div>
+    <div class="statistics"><div><strong>10</strong><span>sequences</span></div><div><strong>71,536</strong><span>RGB frames</span></div><div><strong>3,576 s</strong><span>recorded motion</span></div><div><strong>1.15 km</strong><span>trajectory length</span></div></div>
+    <figure><img loading="lazy" src="assets/benchmark.webp" alt="Indoor benchmark camera images, LiDAR maps, trajectories and IMU signals"><figcaption>RGB observations, colored LiDAR maps, trajectories, and IMU measurements.</figcaption></figure>
+    <details class="additional"><summary>Explore six additional sequences <span>+</span></summary><figure><img loading="lazy" src="assets/additional.webp" alt="Six additional indoor benchmark sequences"></figure></details>
+    <h3 class="table-title">Benchmark evaluation</h3>
+    <div data-table="benchmark"></div>
+  </section>
+  <section class="section" id="results">
+    <div class="section-heading"><p class="eyebrow">04 / Visual results</p><h2>Qualitative comparisons.</h2></div>
+    <figure><img loading="lazy" src="assets/qualitative.webp" alt="Main-paper qualitative comparisons of pose trajectories and Gaussian rendering"></figure>
+    <details class="additional qualitative-panel"><summary>Explore additional qualitative comparisons on Oxford Spires <span aria-hidden="true">+</span></summary><figure><img loading="lazy" src="assets/qualitative_oxford.webp" alt="Oxford Spires qualitative comparisons from the paper appendix"></figure></details>
+    <details class="additional qualitative-panel"><summary>Explore additional qualitative comparisons on M2DGR &amp; INS <span aria-hidden="true">+</span></summary><figure><img loading="lazy" src="assets/qualitative_m2dgr_ins.webp" alt="M2DGR and INS qualitative comparisons from the paper appendix"></figure></details>
+  </section>
+  <section class="section citation-section" id="citation" aria-labelledby="citation-heading">
+    <h2 id="citation-heading">Citation</h2>
+    <div class="citation-box">
+      <div class="citation-toolbar"><span>BibTeX</span><button type="button" id="copy-citation">Copy citation</button></div>
+      <pre tabindex="0" aria-label="MIRAGE BibTeX citation"><code id="citation-text">@misc{wang2026mirage,
+  title  = {{MIRAGE}: Metric Inference and Reliability-Aware Gaussian Estimation from Feed-Forward Vision},
+  author = {Wang, Xinzhe and Jiang, Changjian and Song, Kaiwen and Li, Xudong and
+            Ren, Kerui and Yi, Ran and Ma, Lizhuang and Shen, Chunhua and
+            Xu, Linning and Lu, Tao and Yu, Mulin},
+  year   = {2026},
+  url    = {https://hiroxzwang.github.io/publications/mirage}
+}</code></pre>
+    </div>
+    <p id="citation-status" role="status" aria-live="polite"></p>
+  </section>
+</main>
+<footer><a href="#top" class="wordmark">MIRAGE</a><p><span class="initial">M</span>etric <span class="initial">I</span>nference and <span class="initial">R</span>eliability-<span class="initial">A</span>ware <span class="initial">G</span>aussian <span class="initial">E</span>stimation</p><small>Page layout inspired by <a href="https://egoengine.github.io/" target="_blank" rel="noopener">EgoEngine</a>. All research visuals shown here are MIRAGE assets.</small></footer>
+<noscript><p class="no-js">Enable JavaScript to load the video catalogue. Paper figures remain available as images above.</p></noscript>
+</body>
+</html>

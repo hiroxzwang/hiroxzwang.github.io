@@ -1,0 +1,19 @@
+whu.png
+https://www.whu.edu.cn/new2024/images/favicon.png
+
+huawei.png
+https://www.huawei.com/-/media/hcomponent-header/1.0.1.20260908162100/component/img/huawei_logo.png
+
+timi.png
+https://game.gtimg.cn/images/timi/web202312/logo.png
+
+Institution and company marks belong to their respective owners. Used to identify education and internship affiliations.
+
+shanghai-ai-lab.png
+https://www.shlab.org.cn/static/asset/img/share-logo.png
+
+sjtu.svg
+https://www.sjtu.edu.cn/resource/assets/img/svg/Min-logo-pic.svg
+
+tencent.png
+https://www.tencent.com/wp-content/uploads/2024/05/logo@2x-en.png
