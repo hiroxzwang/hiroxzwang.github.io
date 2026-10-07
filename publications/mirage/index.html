@@ -22,7 +22,7 @@
   <div class="hero-brand"><span class="wordmark">MIRAGE</span></div>
   <div id="hero-divider" role="slider" tabindex="0" aria-label="Reconstruction reveal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% reconstruction, 50% rendering" aria-orientation="horizontal"><span aria-hidden="true">‹ ›</span></div>
 </header>
-<nav class="nav" aria-label="Sections"><a class="wordmark" href="#top">MIRAGE</a><div><a href="#overview">Overview</a><a href="#method">Method</a><a href="#scenes">Scenes</a><a href="#benchmark">Benchmark</a><button id="hero-toggle" type="button" aria-label="Play showcase" title="Play showcase" aria-pressed="false">▶</button></div></nav>
+<nav class="nav" aria-label="Sections"><a class="wordmark" href="#top">MIRAGE</a><div><a href="#overview">Overview</a><a href="#scenes">Scenes</a><a href="#method">Method</a><a href="#benchmark">Benchmark</a><button id="hero-toggle" type="button" aria-label="Play showcase" title="Play showcase" aria-pressed="false">▶</button></div></nav>
 <p id="hero-status" class="showcase-status" role="status"></p>
 <main>
   <section id="overview" class="section introduction">
@@ -37,8 +37,14 @@
     <div class="abstract"><h2>TL;DR</h2><p id="abstract"></p></div>
     <figure><img loading="lazy" src="assets/teaser.webp" alt="MIRAGE teaser: Oxford Spires Gaussian reconstruction, trajectory, rendering and an indoor benchmark"><figcaption>On Oxford Spires Blenheim 02: lower ATE than COLMAP (3.27 vs. 5.50 cm), and higher rendering PSNR than Gaussian-LIC2 (27.82 vs. 21.28 dB). Scene-specific results, not dataset-wide averages.</figcaption></figure>
   </section>
+  <section id="scenes" class="section scene-section">
+    <div class="section-heading"><p class="eyebrow">01 / In motion</p><h2>Every scene. A different perspective.</h2><p>Browse Oxford Spires, M2DGR, INS, and our indoor benchmark. Each demo pairs a reconstruction-process illustration with a refined Gaussian rendering replay.</p></div>
+    <div id="filters" class="filters" role="group" aria-label="Filter scenes by dataset"></div>
+    <div class="scene-viewer"><div class="player-wrap"><video id="scene-video" controls playsinline preload="none" poster="assets/scenes/b2.jpg" aria-label="Selected scene demo"></video><p id="scene-error" class="media-error" hidden role="status"></p></div><aside><p id="scene-dataset" class="eyebrow"></p><h3 id="scene-title"></h3><p id="scene-description"></p><div class="chapter-buttons"><button type="button" data-seek="0">01 · Reconstruction</button><button type="button" data-seek="24">02 · Rendering</button></div><a id="scene-download" download>Download this demo ↓</a><div class="scene-arrows"><button id="previous" type="button" aria-label="Previous scene">←</button><span id="scene-position" aria-live="polite"></span><button id="next" type="button" aria-label="Next scene">→</button></div></aside></div>
+    <div id="scene-list" class="scene-list" aria-label="Choose a scene"></div>
+  </section>
   <section id="method" class="section">
-    <div class="section-heading"><p class="eyebrow">01 / Method</p><h2>Grounded in motion.<br>Refined in appearance.</h2><p>Feed-forward visual evidence meets LiDAR–inertial metric motion, with reliability-aware pose refinement and structure-aware Gaussian adaptation.</p></div>
+    <div class="section-heading"><p class="eyebrow">02 / Method</p><h2>Grounded in motion.<br>Refined in appearance.</h2><p>Feed-forward visual evidence meets LiDAR–inertial metric motion, with reliability-aware pose refinement and structure-aware Gaussian adaptation.</p></div>
     <figure><img loading="lazy" src="assets/pipeline.webp" alt="MIRAGE method pipeline from multimodal input to pose estimation and Gaussian reconstruction"><figcaption>The MIRAGE pipeline.</figcaption></figure>
   </section>
   <section id="quantitative" class="section">
@@ -47,12 +53,6 @@
     <div data-table="pose"></div>
     <h3 class="table-title">Rendering quality <span>PSNR ↑ / SSIM ↑ / LPIPS ↓</span></h3>
     <div data-table="rendering"></div>
-  </section>
-  <section id="scenes" class="section scene-section">
-    <div class="section-heading"><p class="eyebrow">02 / In motion</p><h2>Every scene. A different perspective.</h2><p>Browse Oxford Spires, M2DGR, INS, and our indoor benchmark. Each demo pairs a reconstruction-process illustration with a refined Gaussian rendering replay.</p></div>
-    <div id="filters" class="filters" role="group" aria-label="Filter scenes by dataset"></div>
-    <div class="scene-viewer"><div class="player-wrap"><video id="scene-video" controls playsinline preload="none" poster="assets/scenes/b2.jpg" aria-label="Selected scene demo"></video><p id="scene-error" class="media-error" hidden role="status"></p></div><aside><p id="scene-dataset" class="eyebrow"></p><h3 id="scene-title"></h3><p id="scene-description"></p><div class="chapter-buttons"><button type="button" data-seek="0">01 · Reconstruction</button><button type="button" data-seek="24">02 · Rendering</button></div><a id="scene-download" download>Download this demo ↓</a><div class="scene-arrows"><button id="previous" type="button" aria-label="Previous scene">←</button><span id="scene-position" aria-live="polite"></span><button id="next" type="button" aria-label="Next scene">→</button></div></aside></div>
-    <div id="scene-list" class="scene-list" aria-label="Choose a scene"></div>
   </section>
   <section id="benchmark" class="section">
     <div class="section-heading"><p class="eyebrow">03 / Beyond short trajectories</p><h2>A long-horizon indoor benchmark.</h2><p>Object-rich laboratories, dining areas, corridors, and offices. Synchronized multimodal observations and MIRAGE-established 6-DoF reference trajectories support evaluation of vision-only reconstruction.</p></div>
