@@ -20,8 +20,24 @@
         sup.setAttribute('aria-label', author.affiliations.map(id => config.affiliations[id]).join('; '));
         name.append(sup);
       }
+      const role = config.authorRoles?.[author.role];
+      if (role) {
+        const marker = document.createElement('sup');
+        marker.className = 'author-role'; marker.textContent = role.symbol;
+        marker.title = role.label; marker.setAttribute('aria-label', role.label);
+        name.append(marker);
+      }
       $('#authors').append(name);
     });
+    Object.entries(config.authorRoles || {}).forEach(([key, role]) => {
+      if (!config.authors.some(author => author.role === key)) return;
+      const item = document.createElement('span');
+      const marker = document.createElement('span');
+      marker.className = 'role-symbol'; marker.textContent = role.symbol;
+      item.append(marker, document.createTextNode(' ' + role.label));
+      $('#author-notes').append(item);
+    });
+    $('#author-notes').hidden = !$('#author-notes').childElementCount;
     Object.entries(config.affiliations).forEach(([id, institution]) => {
       const item = document.createElement('span'); item.className = 'affiliation';
       const sup = document.createElement('sup'); sup.textContent = id;

@@ -1,18 +1,23 @@
 /* All media paths are relative to index.html. Change filenames here to match your local project. */
 window.MIRAGE = {
   authors: [
-    {name: 'Xinzhe Wang', url: 'https://hiroxzwang.github.io/', affiliations: [1, 2]},
-    {name: 'Changjian Jiang', url: 'https://scholar.google.com/citations?hl=en&user=V4miywEAAAAJ', affiliations: [3, 2]},
+    {name: 'Xinzhe Wang', role: 'joint', url: 'https://hiroxzwang.github.io/', affiliations: [1, 2]},
+    {name: 'Changjian Jiang', role: 'joint', url: 'https://scholar.google.com/citations?hl=en&user=V4miywEAAAAJ', affiliations: [3, 2]},
     {name: 'Kaiwen Song', url: 'https://scholar.google.com/citations?user=J7kHTIMAAAAJ&hl=en', affiliations: [4, 2]},
     {name: 'Xudong Li', affiliations: [5, 2]},
     {name: 'Kerui Ren', url: 'https://cskrren.github.io/', affiliations: [1, 2]},
-    {name: 'Ran Yi', url: 'https://yiranran.github.io/', affiliations: [1]},
-    {name: 'Lizhuang Ma', url: 'https://dmcv.sjtu.edu.cn/people/', affiliations: [1]},
+    {name: 'Ran Yi', role: 'corresponding', url: 'https://yiranran.github.io/', affiliations: [1]},
+    {name: 'Lizhuang Ma', role: 'corresponding', url: 'https://dmcv.sjtu.edu.cn/people/', affiliations: [1]},
     {name: 'Chunhua Shen', url: 'https://cshen.github.io/', affiliations: [6, 2]},
     {name: 'Linning Xu', url: 'https://eveneveno.github.io/lnxu/', affiliations: [7, 2]},
     {name: 'Tao Lu', url: 'https://inspirelt.github.io/', affiliations: [2]},
-    {name: 'Mulin Yu', url: 'https://mulinyu.github.io/', affiliations: [2]}
+    {name: 'Mulin Yu', role: 'leader', url: 'https://mulinyu.github.io/', affiliations: [2]}
   ],
+  authorRoles: {
+    joint: {symbol: '*', label: 'denotes joint contribution'},
+    corresponding: {symbol: '†', label: 'Corresponding Author'},
+    leader: {symbol: '‡', label: 'Project Leader'}
+  },
   affiliations: {
     1: 'Shanghai Jiao Tong University',
     2: 'Shanghai Artificial Intelligence Laboratory',
