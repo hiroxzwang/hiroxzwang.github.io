@@ -27,7 +27,7 @@ window.MIRAGE = {
     6: 'Zhejiang University',
     7: 'The Chinese University of Hong Kong'
   },
-  links: { paper: '', code: '', dataset: '' }, // Empty paper/code entries show disabled placeholders; other empty entries are hidden.
+  links: { paper: 'https://arxiv.org/pdf/2610.12568', code: '', dataset: '' }, // Empty paper/code entries show disabled placeholders; other empty entries are hidden.
   hero: {
     reconstruction: 'videos/mirage_grid_5x5_full_reconstruction_30s_under30MB.mp4',
     rendering: 'videos/mirage_grid_5x5_clean_30s_under30MB.mp4'
